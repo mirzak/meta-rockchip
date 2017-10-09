@@ -1,7 +1,6 @@
 # Copyright (C) 2015 Romain Perier
 # Released under the MIT license (see COPYING.MIT for the terms)
 
-inherit kernel
 require recipes-kernel/linux/linux-yocto.inc
 
 # As this package is really well integrated into archlinuxarm and applies interesting fixes,
