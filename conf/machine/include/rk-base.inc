@@ -5,8 +5,8 @@
 
 # Default kernel and versions
 PREFERRED_PROVIDER_virtual/kernel ??= "linux-rockchip"
-PREFERRED_VERSION_linux-rockchip ??= "4.4"
-PREFERRED_VERSION_linux-rockchip_rv1109 ??= "3.10"
+PREFERRED_VERSION_linux-rockchip ??= "4.4.%"
+PREFERRED_VERSION_linux-rockchip_rv1109 ??= "3.10.%"
 
 # Serial console setup
 SERIAL_CONSOLES = "115200;ttyS2"
@@ -36,6 +36,11 @@ RK_SPL_BINARY_rk3036 = "u-boot-spl-nodtb.bin"
 
 SPL_BINARY ??= "${RK_SPL_BINARY}"
 
+# Add the ability to specify _rk machines
+MACHINEOVERRIDES =. "rk:"
+
+# Ship kernel modules
+MACHINE_EXTRA_RRECOMMENDS = "kernel-modules"
 
 IMAGE_FSTYPES ??= "ext4 rockchip-gpt-img"
 IMAGE_CLASSES += "rockchip-gpt-img rockchip-update-img"
