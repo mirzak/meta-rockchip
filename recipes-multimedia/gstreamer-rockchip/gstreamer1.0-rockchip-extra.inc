@@ -14,10 +14,12 @@ inherit gettext autotools pkgconfig
 
 PACKAGECONFIG ??= " \
 	kms             \
+	rkv4l2			\
 	${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'rkximage', '', d)} \
 "
 PACKAGECONFIG[rkximage]	= "--enable-rkximage,--disable-rkximage,libdrm"
 PACKAGECONFIG[kms]		= "--enable-kms,--disable-kms,libdrm"
+PACKAGECONFIG[rkv4l2]	= "--enable-rkv4l2,--disable-rkv4l2,libv4l"
 
 EXTRA_OECONF_remove = "--disable-gtk-doc"
 
