@@ -8,6 +8,10 @@ PREFERRED_PROVIDER_virtual/kernel ??= "linux-rockchip"
 PREFERRED_VERSION_linux-rockchip ??= "4.4.%"
 PREFERRED_VERSION_linux-rockchip_rv1109 ??= "3.10.%"
 
+# Default U-boot and U-boot tools
+PREFERRED_PROVIDER_virtual/bootloader ??= "u-boot-rockchip"
+PREFERRED_PROVIDER_u-boot-fw-utils ??= "u-boot-rockchip-fw-utils"
+
 # Serial console setup
 SERIAL_CONSOLES = "115200;ttyS2"
 SERIAL_CONSOLES_rv1108 = "1500000;ttyS2"
@@ -28,9 +32,6 @@ RK_KBUILD_DEFCONFIG_rk3066 = "multi_v7_defconfig"
 RK_KBUILD_DEFCONFIG_rk3188 = "multi_v7_defconfig"
 
 KBUILD_DEFCONFIG ??= "${RK_KBUILD_DEFCONFIG}"
-
-PREFERRED_PROVIDER_virtual/bootloader ??= "u-boot-rockchip"
-PREFERRED_PROVIDER_u-boot-fw-utils ??= "u-boot-rockchip-fw-utils"
 
 RK_SPL_BINARY = "u-boot-spl-dtb.bin"
 RK_SPL_BINARY_rk3036 = "u-boot-spl-nodtb.bin"
