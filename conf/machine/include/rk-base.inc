@@ -30,6 +30,7 @@ RK_KBUILD_DEFCONFIG_rk3188 = "multi_v7_defconfig"
 KBUILD_DEFCONFIG ??= "${RK_KBUILD_DEFCONFIG}"
 
 PREFERRED_PROVIDER_virtual/bootloader ??= "u-boot-rockchip"
+PREFERRED_PROVIDER_u-boot-fw-utils ??= "u-boot-rockchip-fw-utils"
 
 RK_SPL_BINARY = "u-boot-spl-dtb.bin"
 RK_SPL_BINARY_rk3036 = "u-boot-spl-nodtb.bin"
