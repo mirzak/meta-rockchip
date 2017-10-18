@@ -44,5 +44,5 @@ MACHINEOVERRIDES =. "rk:"
 # Ship kernel modules
 MACHINE_EXTRA_RRECOMMENDS = "kernel-modules"
 
-IMAGE_FSTYPES ??= "ext4 rockchip-gpt-img"
+IMAGE_FSTYPES ?= "ext4 rockchip-gpt-img"
 IMAGE_CLASSES += "rockchip-gpt-img rockchip-update-img"
