@@ -34,30 +34,30 @@ MALI_GBM_rk3399 = "libmali-midgard-t86x-r9p0-gbm.so"
 
 # There's only hardfp version available
 python __anonymous() {
-	tunes = d.getVar("TUNE_FEATURES", True)
-	if not tunes:
-		return
+    tunes = d.getVar("TUNE_FEATURES", True)
+    if not tunes:
+        return
 
-	if tunes == "aarch64":
-		d.setVar("MALI_TUNE", "aarch64-linux-gnu")
-	else:
-		d.setVar("MALI_TUNE", "arm-linux-gnueabihf")
+    if tunes == "aarch64":
+        d.setVar("MALI_TUNE", "aarch64-linux-gnu")
+    else:
+        d.setVar("MALI_TUNE", "arm-linux-gnueabihf")
 
-	use_x11 = d.getVar("USE_X11", True)
-	use_wayland = d.getVar("USE_WL", True)
-	if use_x11 == "yes":
-		d.setVar("MALI_NAME", d.getVar("MALI_X11", True))
-	elif use_wayland == "yes":
-		d.setVar("MALI_NAME", d.getVar("MALI_WAYLAND", True))
-	else:
-		d.setVar("MALI_NAME", d.getVar("MALI_GBM", True))
+    use_x11 = d.getVar("USE_X11", True)
+    use_wayland = d.getVar("USE_WL", True)
+    if use_x11 == "yes":
+        d.setVar("MALI_NAME", d.getVar("MALI_X11", True))
+    elif use_wayland == "yes":
+        d.setVar("MALI_NAME", d.getVar("MALI_WAYLAND", True))
+    else:
+        d.setVar("MALI_NAME", d.getVar("MALI_GBM", True))
 
-	if tunes == "aarch64":
-		return
-	if "callconvention-hard" not in tunes:
-		pkgn = d.getVar("PN", True)
-		pkgv = d.getVar("PV", True)
-		raise bb.parse.SkipPackage("%s-%s ONLY supports hardfp mode for now" % (pkgn, pkgv))
+    if tunes == "aarch64":
+        return
+    if "callconvention-hard" not in tunes:
+        pkgn = d.getVar("PN", True)
+        pkgv = d.getVar("PV", True)
+        raise bb.parse.SkipPackage("%s-%s ONLY supports hardfp mode for now" % (pkgn, pkgv))
 }
 
 S = "${WORKDIR}/"
