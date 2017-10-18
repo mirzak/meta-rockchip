@@ -5,7 +5,7 @@ BB_STRICT_CHECKSUM = "0"
 
 COMPATIBLE_MACHINE = "(rk3036|rk3288|rk3328|rk3399)"
 
-DEPENDS = "libdrm mesa"
+DEPENDS = "libdrm mesa patchelf-native"
 
 PROVIDES += "virtual/egl virtual/libgles1 virtual/libgles2 virtual/libopencl libgbm"
 PROVIDES += "${@bb.utils.contains("DISTRO_FEATURES", "wayland", " virtual/libwayland-egl", " ", d)}"
@@ -89,7 +89,12 @@ do_install () {
 
 	if [ "${USE_WL}" = "yes" ]; then
 		ln -sf libMali.so ${D}/${libdir}/libwayland-egl.so
+		ln -sf libMali.so ${D}/${libdir}/libwayland-egl.so.1
 	fi
+
+	# Workaround: libMali.so provided by rk having no SONAME field in itroot
+	# so add it to fix rdepends problems
+	patchelf --set-soname "libEGL.so.1" ${D}/${libdir}/libMali.so
 }
 
 PACKAGES = "${PN}"
@@ -98,9 +103,3 @@ FILES_${PN} += "${libdir}/*.so"
 RREPLACES_${PN} = "libegl libgles1 libglesv1-cm1 libgles2 libglesv2-2 libgbm"
 RCONFLICTS_${PN} = "libegl libgles1 libglesv1-cm1 libgles2 libglesv2-2 libgbm"
 RPROVIDES_${PN} += "libegl libgles1 libglesv1-cm1 libgles2 libglesv2-2 libgbm"
-
-# Workaround: libMali.so provided by rk having no SONAME field in it
-# so add it to fix rdepends problems
-RPROVIDES_${PN} += "libwayland-egl.so libgbm.so libGLESv1_CM.so libGLESv2.so libEGL.so libOpenCL.so"
-RPROVIDES_${PN}_aarch64 += "libwayland-egl.so()(64bit) libgbm.so()(64bit) libGLESv1_CM.so()(64bit) \
-	libGLESv2.so()(64bit) libEGL.so()(64bit) libOpenCL.so()(64bit) "
