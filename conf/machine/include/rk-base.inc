@@ -36,7 +36,7 @@ KBUILD_DEFCONFIG ??= "${RK_KBUILD_DEFCONFIG}"
 RK_SPL_BINARY = "u-boot-spl-dtb.bin"
 RK_SPL_BINARY_rk3036 = "u-boot-spl-nodtb.bin"
 
-SPL_BINARY ??= "${RK_SPL_BINARY}"
+SPL_BINARY ?= "${RK_SPL_BINARY}"
 
 # Add the ability to specify _rk machines
 MACHINEOVERRIDES =. "rk:"
