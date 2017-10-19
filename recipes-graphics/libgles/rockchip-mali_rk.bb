@@ -45,10 +45,10 @@ python __anonymous() {
 
     use_x11 = d.getVar("USE_X11", True)
     use_wayland = d.getVar("USE_WL", True)
-    if use_x11 == "yes":
-        d.setVar("MALI_NAME", d.getVar("MALI_X11", True))
-    elif use_wayland == "yes":
+    if use_wayland == "yes":
         d.setVar("MALI_NAME", d.getVar("MALI_WAYLAND", True))
+    elif use_x11 == "yes":
+        d.setVar("MALI_NAME", d.getVar("MALI_X11", True))
     else:
         d.setVar("MALI_NAME", d.getVar("MALI_GBM", True))
 
