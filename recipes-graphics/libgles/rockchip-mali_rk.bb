@@ -16,21 +16,21 @@ USE_WL = "${@bb.utils.contains("DISTRO_FEATURES", "wayland", "yes", "no", d)}"
 MALI_TUNE = ""
 MALI_NAME = ""
 
-MALI_X11_rk3036 = "libmali-utgard-400-r6p0.so"
+MALI_X11_rk3036 = "libmali-utgard-400-r7p0.so"
 MALI_WAYLAND_rk3036 = "ibmali-utgard-400-r7p0-wayland.so"
 MALI_GBM_rk3036 = "libmali-utgard-400-r7p0-gbm.so"
 
-MALI_X11_rk3288 = "libmali-midgard-t76x-r9p0-r0p0.so"
-MALI_WAYLAND_rk3288 = "libmali-midgard-t76x-r13p0-r0p0-wayland.so "
-MALI_GBM_rk3288 = "libmali-midgard-t76x-r13p0-r0p0-gbm.so "
+MALI_X11_rk3288 = "libmali-midgard-t76x-r14p0-r0p0.so"
+MALI_WAYLAND_rk3288 = "libmali-midgard-t76x-r14p0-r0p0-wayland.so "
+MALI_GBM_rk3288 = "libmali-midgard-t76x-r14p0-r0p0-gbm.so "
 
 MALI_X11_rk3328 = "libmali-utgard-450-r7p0.so"
 MALI_WAYLAND_rk3328 = "libmali-utgard-450-r7p0-wayland.so"
 MALI_GBM_rk3328 = "libmali-utgard-450-r7p0-gbm.so"
 
-MALI_X11_rk3399 = "libmali-midgard-t86x-r9p0.so"
-MALI_WAYLAND_rk3399 = "libmali-midgard-t86x-r13p0-wayland.so"
-MALI_GBM_rk3399 = "libmali-midgard-t86x-r9p0-gbm.so"
+MALI_X11_rk3399 = "libmali-midgard-t86x-r14p0.so"
+MALI_WAYLAND_rk3399 = "libmali-midgard-t86x-r14p0-wayland.so"
+MALI_GBM_rk3399 = "libmali-midgard-t86x-r14p0-gbm.so"
 
 # There's only hardfp version available
 python __anonymous() {
