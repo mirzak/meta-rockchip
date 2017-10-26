@@ -26,7 +26,6 @@ PACKAGECONFIG[mpp]    = "--enable-rockchipmpp,--disable-rockchipmpp,rockchip-mpp
 PACKAGECONFIG[vpudec] = "--enable-vpudec,--disable-vpudec,rockchip-vpu"
 
 EXTRA_OECONF += "    \
-    --disable-kms    \
     --disable-rkximage \
 "
 EXTRA_OECONF_remove = "--disable-gtk-doc"
