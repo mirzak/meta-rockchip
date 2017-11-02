@@ -99,14 +99,14 @@ create_rk_image () {
 	ROOTFS_START=$(expr ${BOOT_START} + ${BOOT_SIZE})
 
 	parted -s ${GPTIMG} unit s mkpart loader1 ${LOADER1_START} $(expr ${RESERVED1_START} - 1)
-	parted -s ${GPTIMG} unit s mkpart reserved1 ${RESERVED1_START} $(expr ${RESERVED2_START} - 1)
-	parted -s ${GPTIMG} unit s mkpart reserved2 ${RESERVED2_START} $(expr ${LOADER2_START} - 1)
+	# parted -s ${GPTIMG} unit s mkpart reserved1 ${RESERVED1_START} $(expr ${RESERVED2_START} - 1)
+	# parted -s ${GPTIMG} unit s mkpart reserved2 ${RESERVED2_START} $(expr ${LOADER2_START} - 1)
 	parted -s ${GPTIMG} unit s mkpart loader2 ${LOADER2_START} $(expr ${ATF_START} - 1)
-	parted -s ${GPTIMG} unit s mkpart atf ${ATF_START} $(expr ${BOOT_START} - 1)
+	parted -s ${GPTIMG} unit s mkpart trust ${ATF_START} $(expr ${BOOT_START} - 1)
 
 	# Create boot partition and mark it as bootable
 	parted -s ${GPTIMG} unit s mkpart boot ${BOOT_START} $(expr ${ROOTFS_START} - 1)
-	parted -s ${GPTIMG} set 6 boot on
+	parted -s ${GPTIMG} set 4 boot on
 
 	# Create rootfs partition
 	parted -s ${GPTIMG} unit s mkpart rootfs ${ROOTFS_START} 100%
@@ -123,7 +123,7 @@ create_rk_image () {
 	gdisk ${GPTIMG} <<EOF
 x
 c
-7
+5
 ${ROOT_UUID}
 w
 y
@@ -133,7 +133,7 @@ EOF
 	rm -f ${WORKDIR}/${BOOT_IMG}
 
 	# Create boot partition image
-	BOOT_BLOCKS=$(LC_ALL=C parted -s ${GPTIMG} unit b print | awk '/ 6 / { print substr($4, 1, length($4 -1)) / 512 /2 }')
+	BOOT_BLOCKS=$(LC_ALL=C parted -s ${GPTIMG} unit b print | awk '/ 4 / { print substr($4, 1, length($4 -1)) / 512 /2 }')
 	BOOT_BLOCKS=$(expr $BOOT_BLOCKS / 63 \* 63)
 
 	mkfs.vfat -n "boot" -S 512 -C ${WORKDIR}/${BOOT_IMG} $BOOT_BLOCKS
