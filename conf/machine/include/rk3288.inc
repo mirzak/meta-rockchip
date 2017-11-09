@@ -6,3 +6,4 @@ SOC_FAMILY = "rk3288"
 require conf/machine/include/tune-cortexa17.inc
 require conf/machine/include/soc-family.inc
 require conf/machine/include/rk-base.inc
+require conf/machine/include/rk-mali-midgard.inc
