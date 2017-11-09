@@ -1,0 +1,44 @@
+From b925e74e3d4381503fe4ba0baead4adfe7788e55 Mon Sep 17 00:00:00 2001
+From: Caesar Wang <wxt@rock-chips.com>
+Date: Fri, 3 Nov 2017 13:04:01 +0800
+Subject: [PATCH 1/2] HACK: drm/rockchip: inno_hdmi: fixes sometime hang on
+ bootup
+
+We have hit the system hang on bootup, caused by the hdmi's audio accessed,
+Even though the hdmi sound have disabled in dts, the inno hdmi driver will
+register the codec init.
+
+I believe the develop-4.4 have the hdmi audio issues for rk3036 SoCs or other.
+In order to support the kylin stable first, let's add this hack patch for stable.
+
+For the history reason, the hdmi's audio patch had not merged on upstream, so
+we did't have hit this issue with upstream kernel and nobody have used
+the inno hdmi-audio on develop-4.4.
+
+In a word, make sure something the stable, we should revert the audio driver or
+solve it asap.
+
+Change-Id: I0192b4af0eae6305adf41e84b54bc974605a237d
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+---
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
+index a62e06ad24f2..334970f05904 100644
+--- a/drivers/gpu/drm/rockchip/inno_hdmi.c
++++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
+@@ -880,7 +880,9 @@ static int inno_hdmi_register(struct drm_device *drm, struct inno_hdmi *hdmi)
+ 
+ 	drm_mode_connector_attach_encoder(&hdmi->connector, encoder);
+ 
+-	inno_hdmi_audio_codec_init(hdmi, dev);
++	/* HACK: the hdmi audio will cause the system hang on rk3036 */
++	if (!of_machine_is_compatible("rockchip,rk3036"))
++		inno_hdmi_audio_codec_init(hdmi, dev);
+ 
+ 	return 0;
+ }
+-- 
+2.14.2
+

@@ -7,7 +7,7 @@ PE = "1"
 
 # We use the revision in order to avoid having to fetch it from the
 # repo during parse
-SRCREV = "001228919855cdc72372ea509fd92ed2c4e95e27"
+SRCREV = "6592d3dcedee4e827fec941402a8fac1cc560f7c"
 
 SRC_URI = "git://github.com/rockchip-linux/u-boot.git;branch=release"
 

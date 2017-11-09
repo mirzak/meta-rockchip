@@ -1,0 +1,36 @@
+From 287b10714e654ee1d06d254f89bc9b63a6519121 Mon Sep 17 00:00:00 2001
+From: Jacob Chen <jacob-chen@iotwrt.com>
+Date: Thu, 9 Nov 2017 10:32:00 +0800
+Subject: [PATCH] enable 1500000 to baud speed table.patch
+
+Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
+---
+ libbb/speed_table.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/libbb/speed_table.c b/libbb/speed_table.c
+index 11ced01..34a9580 100644
+--- a/libbb/speed_table.c
++++ b/libbb/speed_table.c
+@@ -9,6 +9,8 @@
+ 
+ #include "libbb.h"
+ 
++#define B1500000
++
+ struct speed_map {
+ #if defined __FreeBSD__ \
+  || (defined B115200  && B115200  > 0xffff) \
+@@ -142,6 +144,9 @@ speed_t FAST_FUNC tty_value_to_baud(unsigned int value)
+ {
+ 	int i = 0;
+ 
++	if (value == 1500000)
++		value = 1499904;
++
+ 	do {
+ 		if (value == tty_baud_to_value(speeds[i].speed)) {
+ 			return speeds[i].speed;
+-- 
+2.14.2
+
