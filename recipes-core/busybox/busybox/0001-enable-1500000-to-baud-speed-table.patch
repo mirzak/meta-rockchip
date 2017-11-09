@@ -1,7 +1,7 @@
-From af3589d5223c481d0eedd3562fdf30414be029ee Mon Sep 17 00:00:00 2001
+From 4a80a10cad6ec0c9cd282a76d5afd4daf536760c Mon Sep 17 00:00:00 2001
 From: Jacob Chen <jacob-chen@iotwrt.com>
 Date: Thu, 9 Nov 2017 10:32:00 +0800
-Subject: [PATCH 1/1] enable 1500000 to baud speed table.patch
+Subject: [PATCH 1/1] enable 1500000 to baud speed table
 
 Signed-off-by: Jacob Chen <jacob-chen@iotwrt.com>
 ---
