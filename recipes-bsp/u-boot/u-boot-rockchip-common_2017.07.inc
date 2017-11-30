@@ -14,4 +14,4 @@ SRC_URI = "git://github.com/rockchip-linux/u-boot.git;branch=release"
 S = "${WORKDIR}/git"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-COMPATIBLE_MACHINE = "(rk3036|rk3188|rk3288|rk3328|rk3399)"
+COMPATIBLE_MACHINE = "(rk3036|rk3066|rk3188|rk3288|rk3328|rk3399)"

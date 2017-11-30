@@ -3,7 +3,7 @@ SECTION = "libs"
 LICENSE = "CLOSED"
 BB_STRICT_CHECKSUM = "0"
 
-COMPATIBLE_MACHINE = "(rk3036|rk3288|rk3328|rk3399)"
+COMPATIBLE_MACHINE = "(rk3036|rk3066|rk3288|rk3328|rk3399)"
 
 DEPENDS = "libdrm mesa patchelf-native"
 
