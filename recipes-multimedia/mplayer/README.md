@@ -9,13 +9,9 @@ To enable mpv, add belows to rk-base.conf:
 ## DRM ATOMIC
 
 This VO use two video planes:  
-Primary layer for OSD, overlay layer for Video.  
-By default, OSD is in back of overlay layer so it's hidden.  
-To swap them, See:  
-https://github.com/rockchip-linux/meta-rockchip-extra/tree/master/demo/meta-player-qt
+Primary layer for OSD, overlay layer for Video. 
 
-### Rockchip spefic
-Please note that unlike gstreamer kmssink which can be embedded to app(x11, wayland, qt eglfs),
+Please note that unlike gstreamer kmssink which can be embedded to (x11, wayland, qt eglfs)app on rockchip platform(becuase we have adopt some hacks in DRM legacy API),
 ```
 ========================  
 =   ===========     qt =  
