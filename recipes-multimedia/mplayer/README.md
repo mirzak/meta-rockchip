@@ -51,5 +51,5 @@ mpv --hwdec=rkmpp --vo=gpu --gpu-api=opengl --no-audio --gpu-context=drm <file>
 
 ## Wayland
 ```
-mpv --vo=gpu --gpu-api=opengl --no-audio --gpu-context=wayland <file>
+XDG_RUNTIME_DIR=/run/user/0  WAYLAND_DISPLAY=wayland-0 mpv --hwdec=rkmpp --vo=gpu --gpu-api=opengl --no-audio --gpu-context=wayland <file>
 ```
