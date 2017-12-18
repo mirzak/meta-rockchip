@@ -8,14 +8,15 @@ LIC_FILES_CHKSUM = "file://inc/rk_mpi.h;beginline=4;endline=14;md5=acbba394ae563
 inherit pkgconfig cmake
 
 EXTRA_OECMAKE = "     \
-    -DRKPLATFORM=ON   \
+    -DCMAKE_RKPLATFORM_ENABLE=ON   \
     -DHAVE_DRM=ON     \
 "
 
-PACKAGES = "${PN}-dbg ${PN}-staticdev ${PN}-dev ${PN} rockchip-vpu"
+PACKAGES = "${PN}-demos ${PN}-dbg ${PN}-staticdev ${PN}-dev ${PN} rockchip-vpu"
 FILES_rockchip-vpu = "${libdir}/lib*vpu${SOLIBS}"
 FILES_${PN} = "${libdir}/lib*mpp${SOLIBS}"
 FILES_${PN}-dev = "${libdir}/lib*${SOLIBSDEV} ${includedir} ${libdir}/pkgconfig"
+FILES_${PN}-demos = "${bindir}/*"
 SECTION_${PN}-dev = "devel"
 FILES_${PN}-staticdev = "${libdir}/*.a"
 SECTION_${PN}-staticdev = "devel"
