@@ -9,8 +9,9 @@ PREFERRED_VERSION_linux-rockchip ??= "4.4.%"
 PREFERRED_VERSION_linux-rockchip_rv1109 ??= "3.10.%"
 
 # Default U-boot and U-boot tools
-PREFERRED_PROVIDER_virtual/bootloader ??= "u-boot-rockchip"
-PREFERRED_PROVIDER_u-boot-fw-utils ??= "u-boot-rockchip-fw-utils"
+PREFERRED_PROVIDER_virtual/bootloader ?= "u-boot-rockchip"
+PREFERRED_PROVIDER_u-boot-fw-utils ?= "u-boot-rockchip-fw-utils"
+PREFERRED_RPROVIDER_u-boot-fw-utils ?= "u-boot-rockchip-fw-utils"
 
 # Serial console setup
 SERIAL_CONSOLES = "115200;ttyS2"
