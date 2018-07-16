@@ -7,11 +7,14 @@ PE = "1"
 
 # We use the revision in order to avoid having to fetch it from the
 # repo during parse
-# 
-# This matches the release-20171218 tag
-SRCREV = "515bbbdeca48fe1f2796853fa6a6895dac86b6fd"
+#
+# This matches the release-20171107 tag
+SRCREV = "6592d3dcedee4e827fec941402a8fac1cc560f7c"
 
-SRC_URI = "git://github.com/rockchip-linux/u-boot.git;branch=release"
+SRC_URI = "\
+    git://github.com/rockchip-linux/u-boot.git;nobranch=1 \
+    file://0001-envtools-make-sure-version-timestamp-header-file-are.patch \
+"
 
 S = "${WORKDIR}/git"
 
